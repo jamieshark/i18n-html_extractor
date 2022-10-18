@@ -17,7 +17,7 @@ module I18n
         end
 
         def matches
-          erb_nodes(document) + plain_text_nodes(document) + form_fields(document) + aria_labels(document)
+          erb_nodes(document) + plain_text_nodes(document) + form_fields(document) + aria_labels(document) + alt_matches(document)
         end
 
         private
@@ -45,6 +45,14 @@ module I18n
                   .reject { |n| n['aria-label'] =~ /@@(=?)[a-z0-9\-]+@@/ }
                   .map! do |node|
             AriaLabelMatch.create(document, node)
+          end.flatten.compact
+        end
+
+        def alt_matches(document)
+          document.css('img[alt]').select { |el| el['alt'].present? }
+                  .reject { |n| n['alt'] =~ /@@(=?)[a-z0-9\-]+@@/ }
+                  .map! do |node|
+            AltMatch.create(document, node)
           end.flatten.compact
         end
 
