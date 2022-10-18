@@ -5,7 +5,7 @@ describe I18n::HTMLExtractor::Match::AltMatch do
   let(:node) { document.xpath('./div/*').first }
   subject { described_class.create(document, node) }
 
-  context 'when matching inputs' do
+  context 'when matching images' do
     let(:text) { '<div><img alt="Octocat Avatar" src="https://avatars.githubusercontent.com/u/583231?v=4"></img></div>' }
 
     it 'extracts the alt value' do
