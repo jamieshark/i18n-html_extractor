@@ -34,4 +34,12 @@ describe I18n::HTMLExtractor::Match::Finder do
       expect(matches.count).to eq(0)
     end
   end
+
+  context 'when parsing an image tag' do
+    let(:erb_string) { '<div><img alt="Octocat Avatar" src="https://avatars.githubusercontent.com/u/583231?v=4"></div>' }
+
+    it 'extracts a list of matches' do
+      expect(matches.count).to eq(1)
+    end
+  end
 end
