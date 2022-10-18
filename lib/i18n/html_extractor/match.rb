@@ -17,7 +17,13 @@ module I18n
         end
 
         def matches
-          erb_nodes(document) + plain_text_nodes(document) + form_fields(document) + aria_labels(document) + alt_matches(document)
+          [
+            erb_nodes(document),
+            plain_text_nodes(document),
+            form_fields(document),
+            aria_labels(document),
+            alt_matches(document)
+          ].reduce(&:concat)
         end
 
         private
