@@ -6,7 +6,7 @@ describe I18n::HTMLExtractor::Match::AltMatch do
   subject { described_class.create(document, node) }
 
   context 'when matching images' do
-    let(:text) { '<div><img alt="Octocat Avatar" src="https://avatars.githubusercontent.com/u/583231?v=4"></img></div>' }
+    let(:text) { '<div><img alt="Octocat Avatar" src="https://avatars.githubusercontent.com/u/583231?v=4"></div>' }
 
     it 'extracts the alt value' do
       expect(subject).to be_a(Array)
