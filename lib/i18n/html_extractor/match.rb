@@ -4,6 +4,7 @@ require 'i18n/html_extractor/match/erb_directive_match'
 require 'i18n/html_extractor/match/placeholder_match'
 require 'i18n/html_extractor/match/plain_text_match'
 require 'i18n/html_extractor/match/aria_label_match'
+require 'i18n/html_extractor/match/alt_match'
 
 module I18n
   module HTMLExtractor
